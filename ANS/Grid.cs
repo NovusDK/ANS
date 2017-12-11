@@ -11,11 +11,15 @@ namespace ANS
 {
 	public class Grid
 	{
-		GameWorld gameworld = new GameWorld();
+		GameWorld gameworld;
 		Texture2D gridTexture;
 		Rectangle gridRectangle;
 		Rectangle[,] gridArray;
-
+   
+        public Grid(GameWorld gameworld)
+        {
+            this.gameworld = gameworld;
+        }
 
 		public void LoadGrid()
 		{
@@ -36,7 +40,6 @@ namespace ANS
 
 		public void DrawGrid()
 		{
-		  	gameworld.spriteBatch.Begin();
 
 			Texture2D T = new Texture2D(gameworld.GraphicsDevice, 1, 1);
 			T.SetData<Color>(new[] { Color.White });
