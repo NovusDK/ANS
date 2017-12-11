@@ -15,6 +15,7 @@ namespace ANS
 		Texture2D gridTexture;
 		Rectangle gridRectangle;
 		Rectangle[,] gridArray;
+   
 
 
 		public void LoadGrid()
