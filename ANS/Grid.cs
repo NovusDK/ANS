@@ -31,7 +31,6 @@ namespace ANS
 				{
 					gridArray[x, y] = new Rectangle(x * gridSize, y * gridSize, gridSize, gridSize);
 				}
-
 			}
 		}
 
