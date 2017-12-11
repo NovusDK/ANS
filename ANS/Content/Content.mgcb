@@ -133,18 +133,6 @@
 /processorParam:TextureFormat=Color
 /build:nøgle.png
 
-#begin bigW.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:bigW.png
-
 #begin green3.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -180,4 +168,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:sti2.png
+
+#begin bigW2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bigW2.png
 
