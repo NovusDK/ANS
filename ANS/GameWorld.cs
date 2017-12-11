@@ -17,6 +17,8 @@ namespace ANS
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = 1000;
+            graphics.PreferredBackBufferHeight =1000;
         }
 
         /// <summary>
