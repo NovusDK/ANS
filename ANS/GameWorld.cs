@@ -14,7 +14,7 @@ namespace ANS
 		#region fields 
 		Texture2D wizTexture;
 		Rectangle wizRectangle;
-		Grid grid = new Grid();
+		Grid grid;
 		
 		#endregion
 
@@ -25,6 +25,7 @@ namespace ANS
 
         public GameWorld()
         {
+            grid = new Grid(this);
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1000;
