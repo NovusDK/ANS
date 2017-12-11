@@ -12,8 +12,9 @@ namespace ANS
     public class GameWorld : Game
     {
 		#region fields 
-		Texture2D texture;
-		Rectangle rectangle;
+		Texture2D gridTexture, wizTexture;
+		Rectangle gridRectangle, wizRectangle;
+
 
 		Rectangle[,] gridArray;
 		
@@ -55,18 +56,21 @@ namespace ANS
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// TODO: use this.Content to load your game content here
-			texture = Content.Load<Texture2D>("bigW");
-			rectangle = new Rectangle(10, 10, texture.Width, texture.Height);
+			gridTexture = Content.Load<Texture2D>("green3");
+			gridRectangle = new Rectangle(10, 10, gridTexture.Width, gridTexture.Height);
+			wizTexture = Content.Load<Texture2D>("bigW2");
+			wizRectangle = new Rectangle(1, 1, wizTexture.Width, wizTexture.Height);
 
-			
-			gridArray = new Rectangle[100, 100];
-			int gridSize = 50;
 
-			for (int x = 0; x < 100; x++)
+
+			gridArray = new Rectangle[10, 10];
+			int gridSize = graphics.PreferredBackBufferHeight / 20 + graphics.PreferredBackBufferWidth / 20;
+
+			for (int x = 0; x < 10; x++)
 			{
-				for (int y = 0; y < 100; y++)
+				for (int y = 0; y < 10; y++)
 				{
-					gridArray[x, y] = new Rectangle(x * gridSize, y * gridSize, gridSize, gridSize);
+					gridArray[x, y] = new Rectangle(x *gridSize , y * gridSize, gridSize, gridSize);
 				}
 				
 			}
@@ -107,15 +111,17 @@ namespace ANS
 			// TODO: Add your drawing code here
 			spriteBatch.Begin();
 
-			spriteBatch.Draw(texture, rectangle, Color.White);
+			
 
 			Texture2D T = new Texture2D(GraphicsDevice,1,1);
 			T.SetData<Color>(new[] { Color.White });  
 
 			foreach (Rectangle item in gridArray)
 			{
-				spriteBatch.Draw(texture, item, Color.White); 
+				spriteBatch.Draw(gridTexture, item, Color.White); 
 			}
+
+			spriteBatch.Draw(wizTexture, wizRectangle, Color.White);
 
 			spriteBatch.End(); 
 
