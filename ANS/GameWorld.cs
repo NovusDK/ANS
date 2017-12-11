@@ -12,18 +12,16 @@ namespace ANS
     public class GameWorld : Game
     {
 		#region fields 
-		Texture2D gridTexture, wizTexture;
-		Rectangle gridRectangle, wizRectangle;
-
-
-		Rectangle[,] gridArray;
+		Texture2D wizTexture;
+		Rectangle wizRectangle;
+		Grid grid = new Grid();
 		
 		#endregion
 
 
 
-		GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+		public GraphicsDeviceManager graphics;
+        public SpriteBatch spriteBatch;
 
         public GameWorld()
         {
@@ -56,24 +54,12 @@ namespace ANS
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// TODO: use this.Content to load your game content here
-			gridTexture = Content.Load<Texture2D>("green3");
-			gridRectangle = new Rectangle(10, 10, gridTexture.Width, gridTexture.Height);
 			wizTexture = Content.Load<Texture2D>("bigW2");
 			wizRectangle = new Rectangle(1, 1, wizTexture.Width, wizTexture.Height);
 
+			grid.LoadGrid(); 
 
-
-			gridArray = new Rectangle[10, 10];
-			int gridSize = graphics.PreferredBackBufferHeight / 20 + graphics.PreferredBackBufferWidth / 20;
-
-			for (int x = 0; x < 10; x++)
-			{
-				for (int y = 0; y < 10; y++)
-				{
-					gridArray[x, y] = new Rectangle(x *gridSize , y * gridSize, gridSize, gridSize);
-				}
-				
-			}
+			
 		}
 
         /// <summary>
@@ -111,15 +97,7 @@ namespace ANS
 			// TODO: Add your drawing code here
 			spriteBatch.Begin();
 
-			
-
-			Texture2D T = new Texture2D(GraphicsDevice,1,1);
-			T.SetData<Color>(new[] { Color.White });  
-
-			foreach (Rectangle item in gridArray)
-			{
-				spriteBatch.Draw(gridTexture, item, Color.White); 
-			}
+			grid.DrawGrid(); 
 
 			spriteBatch.Draw(wizTexture, wizRectangle, Color.White);
 
