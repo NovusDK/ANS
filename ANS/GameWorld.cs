@@ -13,8 +13,11 @@ namespace ANS
     {
 		#region fields 
 		Texture2D wizTexture;
-		Rectangle wizRectangle;
-		Grid grid;
+		Texture2D portaTexture;
+        Rectangle wizRectangle;
+        Rectangle portaRectangle;
+
+        Grid grid;
 		
 		#endregion
 
@@ -56,9 +59,11 @@ namespace ANS
 
 			// TODO: use this.Content to load your game content here
 			wizTexture = Content.Load<Texture2D>("bigW2");
-			wizRectangle = new Rectangle(1, 1, wizTexture.Width, wizTexture.Height);
+			wizRectangle = new Rectangle(100, 900, wizTexture.Width, wizTexture.Height);
+            portaTexture = Content.Load<Texture2D>("portalA2");
+            portaRectangle = new Rectangle(1, 900, portaTexture.Width, portaTexture.Height);
 
-			grid.LoadGrid(); 
+            grid.LoadGrid(); 
 
 			
 		}
@@ -101,8 +106,9 @@ namespace ANS
 			grid.DrawGrid(); 
 
 			spriteBatch.Draw(wizTexture, wizRectangle, Color.White);
+			spriteBatch.Draw(portaTexture, portaRectangle, Color.White);
 
-			spriteBatch.End(); 
+            spriteBatch.End(); 
 
             base.Draw(gameTime);
         }
