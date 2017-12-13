@@ -11,23 +11,22 @@ namespace ANS
 {
 	public class Grid
 	{
-		GameWorld gameworld;
 		Texture2D gridTexture;
 		Rectangle gridRectangle;
 		Rectangle[,] gridArray;
    
-        public Grid(GameWorld gameworld)
+        public Grid()
         {
-            this.gameworld = gameworld;
+
         }
 
 		public void LoadGrid()
 		{
-			gridTexture = gameworld.Content.Load<Texture2D>("green3");
+			gridTexture = GameWorld.Instance.Content.Load<Texture2D>("green3");
 			gridRectangle = new Rectangle(10, 10, gridTexture.Width, gridTexture.Height);
 
 			gridArray = new Rectangle[10, 10];
-			int gridSize =  gameworld.graphics.PreferredBackBufferHeight / 20 + gameworld.graphics.PreferredBackBufferWidth / 20;
+			int gridSize =  GameWorld.Instance.graphics.PreferredBackBufferHeight / 20 + GameWorld.Instance.graphics.PreferredBackBufferWidth / 20;
 
 			for (int x = 0; x < 10; x++)
 			{
@@ -41,12 +40,12 @@ namespace ANS
 		public void DrawGrid()
 		{
 
-			Texture2D T = new Texture2D(gameworld.GraphicsDevice, 1, 1);
+			Texture2D T = new Texture2D(GameWorld.Instance.GraphicsDevice, 1, 1);
 			T.SetData<Color>(new[] { Color.White });
 
 			foreach (Rectangle item in gridArray)
 			{
-				gameworld.spriteBatch.Draw(gridTexture, item, Color.White);
+				GameWorld.Instance.spriteBatch.Draw(gridTexture, item, Color.White);
 			}
 		}
 	}

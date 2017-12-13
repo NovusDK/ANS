@@ -61,8 +61,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Astar.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="Grid.cs" />
+    <Compile Include="Items.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

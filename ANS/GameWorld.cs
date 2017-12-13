@@ -11,21 +11,36 @@ namespace ANS
     /// </summary>
     public class GameWorld : Game
     {
-		#region fields 
-		Texture2D wizTexture;
-		Rectangle wizRectangle;
-		Grid grid;
-		
+		#region singleton
+		private static GameWorld instance;
+
+		internal static GameWorld Instance
+		{
+			get
+			{
+				//tjek om "instance" eksistere, hvis den ikke eksistere, instansiere den sig selv 
+				if (instance == null)
+				{
+					instance = new GameWorld();
+				}
+				return instance;
+			}
+		}
 		#endregion
 
+		#region fields 
+		Texture2D wizTexture, portalTexture;
+		Rectangle wizRectangle, portalRectangle;
+		Grid grid = new Grid();
+		List<Items> items = new List<Items>(); 
+		#endregion
 
 
 		public GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
 
-        public GameWorld()
+        private GameWorld()
         {
-            grid = new Grid(this);
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1000;
@@ -40,9 +55,12 @@ namespace ANS
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
 
-            base.Initialize();
+			// TODO: Add your initialization logic here
+			items.Add(new Items(new Vector2(50, 50), "bigW2", 1, true, null));
+
+
+			base.Initialize();
         }
 
         /// <summary>
@@ -55,11 +73,19 @@ namespace ANS
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// TODO: use this.Content to load your game content here
+
+			portalTexture = Content.Load<Texture2D>("portalA2");
+			portalRectangle = new Rectangle(0, 800, portalTexture.Width, portalTexture.Height);
 			wizTexture = Content.Load<Texture2D>("bigW2");
-			wizRectangle = new Rectangle(1, 1, wizTexture.Width, wizTexture.Height);
+			wizRectangle = new Rectangle(portalRectangle.X + 100, portalRectangle.Y, wizTexture.Width, wizTexture.Height);
 
-			grid.LoadGrid(); 
 
+			grid.LoadGrid();
+
+			foreach (Items item in items)
+			{
+				item.LoadItems();
+			}
 			
 		}
 
@@ -101,6 +127,12 @@ namespace ANS
 			grid.DrawGrid(); 
 
 			spriteBatch.Draw(wizTexture, wizRectangle, Color.White);
+			spriteBatch.Draw(portalTexture, portalRectangle, Color.White);
+
+			foreach (Items item in items)
+			{
+				item.DrawItems();
+			}
 
 			spriteBatch.End(); 
 
