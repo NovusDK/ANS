@@ -58,9 +58,22 @@ namespace ANS
 
 			// TODO: Add your initialization logic here
 			items.Add(new Items(new Vector2(50, 50), "bigW2", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "green", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "green3", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "mur2", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "nøgle", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "oneeye2", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "portalA", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "portalB", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "rødtrol2", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "sti2", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "tree1", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "tree3", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "treeeye2", 1, true, null));
+			items.Add(new Items(new Vector2(50, 50), "tårn2", 1, true, null));
 
 
-			base.Initialize();
+            base.Initialize();
         }
 
         /// <summary>
